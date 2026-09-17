@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bracket Studio
+
+> **We build the last mile.**  
+> Websites, apps, and tools — shipped, not just written.
+
+Marketing site, contact pipeline, and message dashboard for Bracket Studio.
+
+---
+
+## Tech Stack
+
+- **Framework**: [Next.js](https://nextjs.org) (App Router, Turbopack)
+- **Styling**: [Tailwind CSS v4](https://tailwindcss.com)
+- **Typography**: Fraunces (display) + IBM Plex Sans (body)
+- **Database**: [Turso](https://turso.tech) (libSQL / SQLite)
+- **Validation**: [Zod](https://zod.dev)
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### 1. Clone & Install dependencies
+
+```bash
+npm install
+```
+
+### 2. Configure Environment Variables
+
+Copy `.env.local.example` to `.env.local`:
+
+```bash
+cp .env.local.example .env.local
+```
+
+Fill in:
+- `TURSO_DATABASE_URL` — from `turso db show <db-name> --url`
+- `TURSO_AUTH_TOKEN` — from `turso db tokens create <db-name>`
+- `DASHBOARD_PASSWORD` — password to access `/dashboard`
+
+### 3. Initialize the Database Schema
+
+Run the SQL script on your Turso database:
+
+```bash
+turso db shell <db-name> < scripts/seed.sql
+```
+
+### 4. Run Development Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the site, and [http://localhost:3000/dashboard](http://localhost:3000/dashboard) to view incoming messages.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
