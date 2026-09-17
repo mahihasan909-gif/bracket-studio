@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // @libsql/client uses native binaries — must stay server-side only
+  serverExternalPackages: ["@libsql/client"],
 };
 
 export default nextConfig;
