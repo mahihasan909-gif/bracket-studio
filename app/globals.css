@@ -1,23 +1,22 @@
 @import "tailwindcss";
 
-/* ── Formal Executive IT Studio Palette (Matching Logo) ─────── */
+/* ── Modern Human-Engineered Studio Theme ─────────────────── */
 :root {
   --bg-main:       #0A0D14;  /* Deep IT Midnight Ground (matches #0A0D12 logo) */
   --bg-card:       #111622;  /* Elevated Card Surface */
   --bg-card-hover: #151C2C;  /* Elevated Hover Surface */
-  --bg-subtle:     #0E131F;  /* Sub-surface / Section alternate */
+  --bg-subtle:     #0D111A;  /* Alternate Section Surface */
   
-  --text-white:    #F8FAFC;  /* Crisp Architectural Light (matches logo white) */
-  --text-muted:    #94A3B8;  /* Refined Slate-400 for body */
-  --text-soft:     #CBD5E1;  /* Slate-300 for secondary headers */
+  --text-white:    #F8FAFC;  /* Crisp Architectural Light */
+  --text-muted:    #94A3B8;  /* Refined Slate-400 for copy */
+  --text-soft:     #CBD5E1;  /* Slate-300 for subheadings */
   
-  --border-card:   rgba(255, 255, 255, 0.08); /* Crisp subtle border */
-  --border-hover:  rgba(37, 99, 235, 0.45);   /* Blue hover border */
+  --border-card:   rgba(255, 255, 255, 0.08); /* Crisp structural border */
+  --border-hover:  rgba(37, 99, 235, 0.45);   /* Blue hover glow */
   
   --brand-blue:    #2563EB;  /* Royal Blue (matches logo lower lobe) */
-  --brand-cyan:    #38BDF8;  /* Cyan highlight */
-  --brand-glow:    rgba(37, 99, 235, 0.18);
-  --brand-red:     #E11D48;  /* Accent for Why Us callout */
+  --brand-blue-glow: rgba(37, 99, 235, 0.25);
+  --brand-cyan:    #38BDF8;  /* Sky highlight */
 }
 
 @theme inline {
@@ -30,8 +29,8 @@
   --color-text-soft:     var(--text-soft);
   --color-border-card:   var(--border-card);
   --color-brand-blue:    var(--brand-blue);
-  --font-display:        var(--font-fraunces), Georgia, serif;
-  --font-body:           var(--font-ibm-plex-sans), system-ui, sans-serif;
+  --font-sans:           var(--font-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:           var(--font-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 }
 
 /* ── Base ──────────────────────────────────────────── */
@@ -41,114 +40,80 @@ html { scroll-behavior: smooth; }
 body {
   background-color: var(--bg-main);
   color: var(--text-white);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ── Type Scale ────────────────────────────────────── */
-h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1.08; }
-h2 { font-size: clamp(1.85rem, 4.2vw, 3rem); line-height: 1.15; }
-h3 { font-size: clamp(1.25rem, 3vw, 1.85rem); line-height: 1.25; }
-h4 { font-size: 1.2rem; line-height: 1.35; }
-
+/* ── Typography (Engineering Studio Modern) ────────── */
 h1, h2, h3, h4 {
-  font-family: var(--font-display);
+  font-family: var(--font-sans);
   font-weight: 700;
+  letter-spacing: -0.025em;
   color: var(--text-white);
 }
 
-/* ── Keyframes ─────────────────────────────────────── */
-@keyframes bracket-left {
-  from { transform: translateX(-2.5rem); opacity: 0; }
-  to   { transform: translateX(0);       opacity: 1; }
-}
-@keyframes bracket-right {
-  from { transform: translateX(2.5rem);  opacity: 0; }
-  to   { transform: translateX(0);       opacity: 1; }
-}
-@keyframes fade-up {
-  from { transform: translateY(1.5rem); opacity: 0; }
-  to   { transform: translateY(0);      opacity: 1; }
-}
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
+h1 { font-size: clamp(2.4rem, 5.5vw, 4rem); line-height: 1.1; }
+h2 { font-size: clamp(1.8rem, 4vw, 2.75rem); line-height: 1.15; }
+h3 { font-size: clamp(1.2rem, 2.5vw, 1.65rem); line-height: 1.25; }
+
+/* ── Ticker / Marquee ──────────────────────────────── */
 @keyframes ticker {
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-8px); }
-}
 
-.bracket-left  { animation: bracket-left  0.7s cubic-bezier(.16,1,.3,1) forwards; }
-.bracket-right { animation: bracket-right 0.7s cubic-bezier(.16,1,.3,1) forwards; }
-.anim-fade-up  { animation: fade-up 0.7s cubic-bezier(.16,1,.3,1) both; }
-.anim-fade-in  { animation: fade-in 0.6s ease both; }
-.float-bracket { animation: float 7s ease-in-out infinite; }
-
-.delay-100 { animation-delay: 0.10s; }
-.delay-200 { animation-delay: 0.20s; }
-.delay-300 { animation-delay: 0.30s; }
-.delay-400 { animation-delay: 0.40s; }
-.delay-500 { animation-delay: 0.50s; }
-
-/* ── Gradient Headline ─────────────────────────────── */
-.gradient-headline {
-  background: linear-gradient(135deg, #F8FAFC 20%, #38BDF8 65%, #2563EB 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ── Ticker Track ──────────────────────────────────── */
 .ticker-track {
   display: flex;
   width: max-content;
-  animation: ticker 32s linear infinite;
+  animation: ticker 36s linear infinite;
 }
 .ticker-track:hover { animation-play-state: paused; }
 
-/* ── Executive Buttons ─────────────────────────────── */
+/* ── Human Engineering Studio Buttons ──────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background-color: var(--brand-blue);
   color: #FFFFFF;
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-weight: 600;
-  padding: 0.8rem 1.65rem;
-  border-radius: 0.625rem;
-  box-shadow: 0 4px 16px -2px rgba(37, 99, 235, 0.45);
-  transition: all 0.25s ease;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 4px 14px -2px rgba(37, 99, 235, 0.4);
+  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
 }
 .btn-primary:hover {
   background-color: #1D4ED8;
-  box-shadow: 0 6px 24px -2px rgba(37, 99, 235, 0.65);
+  box-shadow: 0 6px 20px -2px rgba(37, 99, 235, 0.6);
   transform: translateY(-1px);
+}
+.btn-primary:active {
+  transform: translateY(0);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
   background-color: rgba(255, 255, 255, 0.04);
   color: var(--text-white);
-  font-family: var(--font-body);
+  font-family: var(--font-sans);
   font-weight: 600;
-  padding: 0.8rem 1.65rem;
-  border-radius: 0.625rem;
+  font-size: 0.9375rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: 0.5rem;
   border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
-  transition: all 0.25s ease;
+  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
 }
@@ -157,18 +122,23 @@ h1, h2, h3, h4 {
   border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
 }
+.btn-secondary:active {
+  transform: translateY(0);
+}
 
-/* ── Executive Card ────────────────────────────────── */
-.it-card {
+/* ── Interactive Bento Cards ───────────────────────── */
+.bento-card {
   background-color: var(--bg-card);
   border: 1px solid var(--border-card);
   border-radius: 1rem;
   box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35);
   transition: all 0.3s cubic-bezier(.16,1,.3,1);
+  position: relative;
+  overflow: hidden;
 }
-.it-card:hover {
+.bento-card:hover {
   border-color: var(--border-hover);
   background-color: var(--bg-card-hover);
-  box-shadow: 0 12px 36px -6px rgba(37, 99, 235, 0.2);
-  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -4px rgba(37, 99, 235, 0.15);
+  transform: translateY(-2px);
 }

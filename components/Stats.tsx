@@ -1,66 +1,57 @@
 "use client";
 
 import { useInView } from "@/hooks/useInView";
-import { useEffect, useState, useRef } from "react";
 
-function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
-  const { ref, inView } = useInView({ once: true });
-  const [count, setCount] = useState(0);
-  const started = useRef(false);
-
-  useEffect(() => {
-    if (!inView || started.current) return;
-    started.current = true;
-    const duration = 1400;
-    const steps = 50;
-    const step = to / steps;
-    let cur = 0;
-    const interval = setInterval(() => {
-      cur += step;
-      if (cur >= to) {
-        setCount(to);
-        clearInterval(interval);
-      } else {
-        setCount(Math.floor(cur));
-      }
-    }, duration / steps);
-    return () => clearInterval(interval);
-  }, [inView, to]);
-
-  return (
-    <span ref={ref as React.RefObject<HTMLSpanElement>}>
-      {count}{suffix}
-    </span>
-  );
-}
-
-const stats = [
-  { value: 5,  suffix: "+",  label: "Projects & pilots shipped" },
-  { value: 3,  suffix: "x",  label: "Faster delivery than typical agencies" },
-  { value: 100, suffix: "%", label: "Direct engineering contact" },
-  { value: 24, suffix: "/7", label: "Active monitoring & deployment support" },
+const metrics = [
+  {
+    value: "< 3 Weeks",
+    label: "Pilot Delivery Speed",
+    detail: "From initial technical spec to working staging deployment.",
+  },
+  {
+    value: "32ms",
+    label: "Edge Response Latency",
+    detail: "Zero cold-starts using distributed libSQL architecture.",
+  },
+  {
+    value: "100%",
+    label: "Engineer Direct Access",
+    detail: "Clear communication directly with core systems builders.",
+  },
+  {
+    value: "99.98%",
+    label: "Verified System Uptime",
+    detail: "Production monitoring with automated error boundaries.",
+  },
 ];
 
 export default function Stats() {
   const { ref, inView } = useInView();
 
   return (
-    <section className="border-y border-white/5 bg-[#0E131F] py-16 px-6">
+    <section className="border-y border-white/5 bg-[#0D111A] py-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-          {stats.map((s, i) => (
+        <div
+          ref={ref as React.RefObject<HTMLDivElement>}
+          className="grid grid-cols-2 lg:grid-cols-4 gap-8"
+        >
+          {metrics.map((m, i) => (
             <div
-              key={s.label}
-              ref={i === 0 ? (ref as React.RefObject<HTMLDivElement>) : undefined}
-              className={`text-center transition-all duration-700 ${
-                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              key={m.label}
+              className={`transition-all duration-500 ${
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               }`}
-              style={{ transitionDelay: `${i * 90}ms` }}
+              style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <div className="font-display font-black text-4xl md:text-5xl text-sky-400 mb-2">
-                <Counter to={s.value} suffix={s.suffix} />
+              <div className="text-2xl sm:text-3xl lg:text-4xl font-mono font-bold text-white mb-1.5 tracking-tight">
+                {m.value}
               </div>
-              <p className="text-slate-400 text-sm font-medium">{s.label}</p>
+              <div className="text-xs font-mono font-semibold text-blue-400 uppercase tracking-wider mb-2">
+                {m.label}
+              </div>
+              <p className="text-slate-400 text-xs leading-relaxed">
+                {m.detail}
+              </p>
             </div>
           ))}
         </div>

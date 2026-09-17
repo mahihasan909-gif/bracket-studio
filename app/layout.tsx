@@ -1,28 +1,28 @@
 import type { Metadata } from "next";
-import { Fraunces, IBM_Plex_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const fraunces = Fraunces({
+const sans = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  variable: "--font-sans",
   display: "swap",
-  weight: ["400", "700", "900"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const ibmPlexSans = IBM_Plex_Sans({
+const mono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-ibm-plex-sans",
+  variable: "--font-mono",
   display: "swap",
-  weight: ["400", "600"],
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "Bracket Studio — We build the last mile.",
+  title: "Bracket Studio — Production Software & Digital Engineering",
   description:
-    "A small student dev team building real software for professors, campus orgs, and small businesses. Websites, apps, and tools — shipped, not just written.",
+    "Engineering team in Dhaka building custom full-stack software, agentic AI pipelines, mobile applications, and high-performance web systems.",
   openGraph: {
-    title: "Bracket Studio",
-    description: "We build the last mile.",
+    title: "Bracket Studio — Systems & Software Architecture",
+    description: "We build the last mile of digital products.",
     type: "website",
   },
 };
@@ -31,8 +31,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${ibmPlexSans.variable}`}>
-      <body>{children}</body>
+    <html lang="en" className={`${sans.variable} ${mono.variable} scroll-smooth`}>
+      <body className="antialiased selection:bg-blue-600 selection:text-white bg-[#0A0D14] text-[#F8FAFC]">
+        {children}
+      </body>
     </html>
   );
 }
