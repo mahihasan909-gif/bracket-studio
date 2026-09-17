@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-const words = ["Custom Software.", "Websites.", "Agentic AI.", "Mobile Apps."];
+const words = ["Custom Software.", "Websites & Web Apps.", "Agentic AI Systems.", "Mobile Applications."];
 
 export default function Hero() {
   const [animated, setAnimated] = useState(false);
@@ -11,7 +11,7 @@ export default function Hero() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setAnimated(true), 100);
+    const t = setTimeout(() => setAnimated(true), 80);
     return () => clearTimeout(t);
   }, []);
 
@@ -21,11 +21,11 @@ export default function Hero() {
     let timeout: ReturnType<typeof setTimeout>;
 
     if (!deleting && displayed.length < current.length) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 60);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length + 1)), 55);
     } else if (!deleting && displayed.length === current.length) {
-      timeout = setTimeout(() => setDeleting(true), 2000);
+      timeout = setTimeout(() => setDeleting(true), 2200);
     } else if (deleting && displayed.length > 0) {
-      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 35);
+      timeout = setTimeout(() => setDisplayed(current.slice(0, displayed.length - 1)), 30);
     } else if (deleting && displayed.length === 0) {
       setDeleting(false);
       setWordIndex((i) => (i + 1) % words.length);
@@ -35,66 +35,66 @@ export default function Hero() {
   }, [displayed, deleting, wordIndex]);
 
   return (
-    <section className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[var(--ink)]">
-      {/* Background grid */}
+    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden bg-gradient-to-b from-slate-50 via-slate-50/80 to-white pt-24 pb-16">
+      {/* Soft Ambient Radial Glows */}
+      <div className="pointer-events-none absolute top-12 left-1/2 -translate-x-1/2 w-[900px] h-[500px] rounded-full bg-blue-500/10 blur-[140px]" />
+      <div className="pointer-events-none absolute top-1/3 right-10 w-[450px] h-[450px] rounded-full bg-indigo-500/8 blur-[120px]" />
+
+      {/* Subtle Grid */}
       <div
-        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        className="pointer-events-none absolute inset-0 opacity-[0.4]"
         style={{
           backgroundImage:
-            "linear-gradient(var(--paper) 1px, transparent 1px), linear-gradient(90deg, var(--paper) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
+            "linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px)",
+          backgroundSize: "64px 64px",
         }}
       />
 
-      {/* Radial glow */}
-      <div className="pointer-events-none absolute top-1/3 left-1/4 w-[600px] h-[600px] rounded-full bg-[var(--blue)] opacity-[0.07] blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/2 right-1/4 w-[400px] h-[400px] rounded-full bg-[var(--blue-light)] opacity-[0.05] blur-[100px]" />
-
       {/* Floating brackets decorations */}
       <span
-        className="pointer-events-none absolute top-32 right-24 font-mono text-[8rem] leading-none text-[var(--blue)] opacity-[0.06] float-bracket select-none"
+        className="pointer-events-none absolute top-28 right-16 font-mono text-[9rem] leading-none text-blue-200/40 float-bracket select-none"
         style={{ animationDelay: "0s" }}
       >
         {"{"}
       </span>
       <span
-        className="pointer-events-none absolute bottom-32 left-16 font-mono text-[6rem] leading-none text-[var(--blue)] opacity-[0.06] float-bracket select-none"
-        style={{ animationDelay: "2s" }}
+        className="pointer-events-none absolute bottom-24 left-12 font-mono text-[7rem] leading-none text-slate-200/60 float-bracket select-none"
+        style={{ animationDelay: "2.5s" }}
       >
         {"["}
       </span>
       <span
-        className="pointer-events-none absolute bottom-48 right-48 font-mono text-[5rem] leading-none text-[var(--blue)] opacity-[0.04] float-bracket select-none"
-        style={{ animationDelay: "4s" }}
+        className="pointer-events-none absolute bottom-36 right-36 font-mono text-[6rem] leading-none text-blue-200/30 float-bracket select-none"
+        style={{ animationDelay: "5s" }}
       >
         {"]"}
       </span>
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-24 pb-16">
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-12">
         {/* Eyebrow tag */}
         <div
-          className={`inline-flex items-center gap-2 border border-[var(--border)] px-4 py-1.5 mb-8 text-sm text-[var(--muted)] opacity-0 ${
+          className={`inline-flex items-center gap-2 bg-blue-50/80 border border-blue-200/80 text-blue-700 px-4 py-1.5 rounded-full mb-8 text-sm font-medium shadow-xs opacity-0 ${
             animated ? "anim-fade-up" : ""
           }`}
         >
-          <span className="w-1.5 h-1.5 rounded-full bg-[var(--blue)] inline-block animate-pulse" />
-          Dhaka-based student dev team · Available for projects
+          <span className="w-2 h-2 rounded-full bg-blue-600 inline-block animate-pulse" />
+          Dhaka-based engineering team &middot; Available for pilots & projects
         </div>
 
-        {/* Main headline with brackets */}
-        <div className="flex items-start gap-4 mb-4">
+        {/* Main headline with architectural brackets */}
+        <div className="flex items-start gap-3 md:gap-5 mb-4">
           <span
-            className={`font-display font-black text-[var(--blue)] select-none opacity-0 ${
+            className={`font-display font-black text-blue-600 select-none opacity-0 ${
               animated ? "bracket-left" : ""
             }`}
-            style={{ fontSize: "clamp(3rem,8vw,6rem)", lineHeight: 1 }}
+            style={{ fontSize: "clamp(3.5rem, 8vw, 6.5rem)", lineHeight: 1 }}
           >
             {"{"}
           </span>
 
           <div className="flex-1 min-w-0">
-            <h1 className="font-display font-black text-[var(--paper)] leading-tight mb-2">
+            <h1 className="font-display font-black text-slate-900 leading-[1.08] mb-3">
               We build the
               <br />
               <span className="gradient-text">last mile.</span>
@@ -102,10 +102,10 @@ export default function Hero() {
           </div>
 
           <span
-            className={`font-display font-black text-[var(--blue)] self-end select-none opacity-0 ${
+            className={`font-display font-black text-blue-600 self-end select-none opacity-0 ${
               animated ? "bracket-right" : ""
             }`}
-            style={{ fontSize: "clamp(3rem,8vw,6rem)", lineHeight: 1 }}
+            style={{ fontSize: "clamp(3.5rem, 8vw, 6.5rem)", lineHeight: 1 }}
           >
             {"}"}
           </span>
@@ -113,17 +113,17 @@ export default function Hero() {
 
         {/* Typewriter sub-line */}
         <div
-          className={`ml-0 md:ml-4 mb-8 opacity-0 ${animated ? "anim-fade-up delay-300" : ""}`}
+          className={`mb-8 opacity-0 ${animated ? "anim-fade-up delay-300" : ""}`}
         >
-          <p className="text-[var(--muted)] text-xl md:text-2xl font-body">
-            We ship{" "}
-            <span className="text-[var(--paper)] font-semibold">
+          <p className="text-slate-600 text-xl md:text-2xl font-body">
+            We deliver{" "}
+            <span className="text-blue-600 font-semibold">
               {displayed}
-              <span className="inline-block w-[2px] h-[1.2em] bg-[var(--blue)] ml-0.5 align-middle animate-pulse" />
+              <span className="inline-block w-[2px] h-[1.15em] bg-blue-600 ml-0.5 align-middle animate-pulse" />
             </span>
           </p>
-          <p className="text-[var(--muted)] mt-2 max-w-[55ch] text-lg">
-            Real software for professors, campus orgs, and businesses — deployed, secured, and maintained.
+          <p className="text-slate-500 mt-3 max-w-[58ch] text-base md:text-lg leading-relaxed">
+            Engineered software for professors, campus organizations, and growing businesses&thinsp;—&thinsp;shipped, secured, and supported.
           </p>
         </div>
 
@@ -131,22 +131,12 @@ export default function Hero() {
         <div
           className={`flex flex-wrap gap-4 opacity-0 ${animated ? "anim-fade-up delay-500" : ""}`}
         >
-          <a href="#contact" className="btn-primary">
-            Start a project
+          <a href="#contact" className="btn-primary text-base">
+            Start a project &rarr;
           </a>
-          <a href="#work" className="btn-ghost">
-            See our work
+          <a href="#services" className="btn-ghost text-base">
+            Explore services
           </a>
-        </div>
-
-        {/* Scroll cue */}
-        <div
-          className={`mt-16 flex items-center gap-3 text-[var(--muted)] text-sm opacity-0 ${
-            animated ? "anim-fade-in delay-700" : ""
-          }`}
-        >
-          <div className="w-px h-10 bg-gradient-to-b from-transparent via-[var(--border)] to-transparent" />
-          Scroll to explore
         </div>
       </div>
     </section>

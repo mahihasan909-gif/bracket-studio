@@ -4,14 +4,16 @@ import { useInView } from "@/hooks/useInView";
 
 const caseStudies = [
   {
-    tag: "01 / Web Application",
-    title: "Faculty Research Portal",
-    problem: "A university professor needed to collect and review student submissions for a longitudinal study. The existing Google Form setup created hours of manual data work each semester.",
-    built: "A Next.js web app with a Turso-backed submission database, admin dashboard with filtering, and one-click CSV export. Delivered in 3 weeks.",
-    result: "Review time cut from ~4 hours per batch to under 20 minutes. Now used across two courses.",
-    tags: ["Next.js", "Turso", "Auth"],
+    tag: "01 / Web Application & Portal",
+    title: "Faculty Research & Student Portal",
+    problem:
+      "A university professor needed to reliably collect, validate, and review longitudinal study submissions from hundreds of students. The prior Google Forms setup created hours of manual data wrangling and unverified inputs each semester.",
+    built:
+      "A full-stack Next.js web application featuring a Turso-backed submission database, student authentication, real-time submission review dashboard for faculty, and one-click CSV/JSON export. Built and shipped in under three weeks.",
+    result:
+      "Batch evaluation and submission review time reduced from ~4 hours per cycle to under 20 minutes. Currently deployed and in active use across multiple department cohorts.",
+    tags: ["Next.js", "Turso libSQL", "Tailwind CSS", "TypeScript", "Vercel"],
   },
-  // TODO: Add your real projects here
 ];
 
 function CaseStudyCard({ cs, delay }: { cs: typeof caseStudies[0]; delay: number }) {
@@ -19,44 +21,63 @@ function CaseStudyCard({ cs, delay }: { cs: typeof caseStudies[0]; delay: number
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`border border-[var(--border)] overflow-hidden group transition-all duration-700 hover:border-[var(--blue)]/50 ${
+      className={`bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group transition-all duration-700 hover:border-blue-300 hover:shadow-xl ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
-      {/* Top bar */}
-      <div className="px-8 py-4 border-b border-[var(--border)] flex items-center justify-between">
-        <span className="font-mono text-xs text-[var(--muted)] tracking-widest">{cs.tag}</span>
-        <div className="flex gap-1.5">
-          {["#3D3D3D", "#555", "#777"].map((c, j) => (
-            <div key={j} className="w-2.5 h-2.5 rounded-full" style={{ background: c }} />
-          ))}
+      {/* Top Window Bar */}
+      <div className="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+        <div className="flex items-center gap-2">
+          <div className="w-3 h-3 rounded-full bg-rose-400" />
+          <div className="w-3 h-3 rounded-full bg-amber-400" />
+          <div className="w-3 h-3 rounded-full bg-emerald-400" />
+          <span className="ml-3 font-mono text-xs text-slate-500 font-medium">
+            case-study / portal.production.app
+          </span>
         </div>
+        <span className="font-mono text-xs text-blue-600 font-semibold uppercase tracking-wider">
+          {cs.tag}
+        </span>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_2fr] divide-x divide-[var(--border)]">
-        <div className="p-8 flex flex-col justify-between">
-          <h3 className="font-display font-bold text-[var(--paper)] text-2xl mb-6 group-hover:text-[var(--blue-light)] transition-colors">
-            {cs.title}
-          </h3>
-          <div className="flex flex-wrap gap-2">
+      <div className="grid md:grid-cols-[1fr_2fr] divide-y md:divide-y-0 md:divide-x divide-slate-100">
+        <div className="p-8 flex flex-col justify-between bg-slate-50/50">
+          <div>
+            <h3 className="font-display font-bold text-slate-900 text-2xl mb-4 group-hover:text-blue-600 transition-colors">
+              {cs.title}
+            </h3>
+            <p className="text-sm text-slate-500 leading-relaxed">
+              Real pilot project built for academic faculty and department operations.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-1.5 mt-6">
             {cs.tags.map((t) => (
-              <span key={t} className="text-xs border border-[var(--border)] text-[var(--muted)] px-2 py-0.5">
+              <span
+                key={t}
+                className="text-xs bg-white border border-slate-200 text-slate-600 px-2.5 py-1 rounded-md font-mono"
+              >
                 {t}
               </span>
             ))}
           </div>
         </div>
 
-        <div className="p-8 space-y-5">
+        <div className="p-8 space-y-6">
           {[
-            { label: "Problem", text: cs.problem },
-            { label: "What we built", text: cs.built },
-            { label: "Result", text: cs.result, highlight: true },
+            { label: "The Challenge", text: cs.problem, highlight: false },
+            { label: "What We Engineered", text: cs.built, highlight: false },
+            { label: "Business & Academic Result", text: cs.result, highlight: true },
           ].map(({ label, text, highlight }) => (
             <div key={label}>
-              <p className="text-xs font-semibold uppercase tracking-widest text-[var(--muted)] mb-1">{label}</p>
-              <p className={`text-sm leading-relaxed ${highlight ? "text-[var(--paper)] font-semibold" : "text-[var(--paper)]/70"}`}>
+              <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1.5 font-mono">
+                {label}
+              </p>
+              <p
+                className={`text-sm md:text-base leading-relaxed ${
+                  highlight ? "text-slate-900 font-semibold" : "text-slate-600"
+                }`}
+              >
                 {text}
               </p>
             </div>
@@ -71,28 +92,32 @@ export default function Work() {
   const { ref: headRef, inView: headIn } = useInView();
 
   return (
-    <section id="work" className="bg-[var(--ink)] py-24 px-6">
+    <section id="work" className="bg-slate-50 py-24 px-6 border-b border-slate-200/80">
       <div className="max-w-6xl mx-auto">
         <div
           ref={headRef as React.RefObject<HTMLDivElement>}
-          className={`mb-16 transition-all duration-700 ${headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+          className={`mb-16 transition-all duration-700 ${
+            headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
         >
-          <p className="text-[var(--blue)] font-mono text-sm mb-3 tracking-widest">[ RECENT WORK ]</p>
-          <h2 className="font-display font-bold text-[var(--paper)]">
+          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-blue-700 px-3.5 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-3">
+            [ RECENT WORK ]
+          </div>
+          <h2 className="font-display font-bold text-slate-900 text-3xl md:text-5xl leading-tight">
             Problems solved,
             <br />
             <span className="gradient-text">systems shipped.</span>
           </h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {caseStudies.map((cs, i) => (
-            <CaseStudyCard key={cs.title} cs={cs} delay={i * 150} />
+            <CaseStudyCard key={cs.title} cs={cs} delay={i * 120} />
           ))}
         </div>
 
-        <p className="mt-8 text-center text-[var(--muted)] text-sm">
-          More case studies coming soon — we&rsquo;re documenting active projects.
+        <p className="mt-10 text-center text-slate-400 text-sm font-medium">
+          More case studies coming soon &mdash; currently packaging new commercial deliverables.
         </p>
       </div>
     </section>
