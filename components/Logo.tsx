@@ -1,0 +1,36 @@
+export default function Logo({
+  className = "w-8 h-8",
+  showText = true,
+}: {
+  className?: string;
+  showText?: boolean;
+}) {
+  return (
+    <div className="flex items-center gap-2.5 group">
+      <svg
+        className={`shrink-0 transition-transform duration-300 group-hover:scale-105 ${className}`}
+        viewBox="0 0 160 160"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="160" height="160" rx="28" fill="#0A0D12" />
+        <g transform="translate(36, 28)">
+          <rect x="0" y="0" width="22" height="104" rx="4" fill="#F8FAFC" />
+          <path
+            fill="#F8FAFC"
+            d="M 28 0 H 64 C 77.25 0 88 10.75 88 24 C 88 37.25 77.25 48 64 48 H 28 V 28 H 62 C 64.21 28 66 26.21 66 24 C 66 21.79 64.21 20 62 20 H 28 Z"
+          />
+          <path
+            fill="#2563EB"
+            d="M 28 56 H 66 C 79.25 56 90 66.75 90 80 C 90 93.25 79.25 104 66 104 H 28 V 84 H 64 C 66.21 84 68 82.21 68 80 C 68 77.79 66.21 76 64 76 H 28 Z"
+          />
+        </g>
+      </svg>
+      {showText && (
+        <span className="font-display font-bold text-[var(--paper)] text-lg tracking-tight group-hover:text-[var(--blue-light)] transition-colors">
+          Bracket Studio
+        </span>
+      )}
+    </div>
+  );
+}

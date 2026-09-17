@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Logo from "./Logo";
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
@@ -20,13 +21,9 @@ export default function Nav() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Wordmark */}
-        <a href="/" className="flex items-center gap-1 group">
-          <span className="text-[var(--blue)] font-mono text-xl font-bold transition-colors group-hover:text-[var(--blue-light)]">[</span>
-          <span className="font-display font-bold text-[var(--paper)] text-lg tracking-tight">
-            Bracket Studio
-          </span>
-          <span className="text-[var(--blue)] font-mono text-xl font-bold transition-colors group-hover:text-[var(--blue-light)]">]</span>
+        {/* Brand Logo */}
+        <a href="/" className="flex items-center gap-2">
+          <Logo className="w-8 h-8" />
         </a>
 
         {/* Nav items */}

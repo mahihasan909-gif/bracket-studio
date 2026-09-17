@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { useRouter } from "next/navigation";
+import Logo from "@/components/Logo";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -36,11 +37,12 @@ export default function LoginPage() {
   return (
     <div className="min-h-screen bg-[var(--ink)] flex items-center justify-center px-4">
       <div className="w-full max-w-sm">
-        <h1 className="font-display text-[var(--paper)] text-2xl font-bold mb-8">
-          <span className="text-[var(--blue)]">[</span>
-          &nbsp;Dashboard&nbsp;
-          <span className="text-[var(--blue)]">]</span>
-        </h1>
+        <div className="mb-8 flex items-center justify-between">
+          <Logo className="w-10 h-10" />
+          <span className="text-xs font-mono uppercase tracking-widest text-[var(--muted)] border border-[var(--border)] px-2 py-1">
+            Dashboard
+          </span>
+        </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input

@@ -1,14 +1,14 @@
+import Logo from "./Logo";
+
 export default function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-[var(--border)] bg-[var(--ink)] px-6 py-10">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-wrap items-center justify-between gap-6">
-          {/* Wordmark */}
-          <a href="/" className="flex items-center gap-1 group">
-            <span className="text-[var(--blue)] font-mono font-bold group-hover:text-[var(--blue-light)] transition-colors">[</span>
-            <span className="font-display font-bold text-[var(--paper)]">Bracket Studio</span>
-            <span className="text-[var(--blue)] font-mono font-bold group-hover:text-[var(--blue-light)] transition-colors">]</span>
+          {/* Brand Logo */}
+          <a href="/" className="flex items-center gap-2">
+            <Logo className="w-7 h-7" />
           </a>
 
           {/* Links */}

@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import MessageRow from "./MessageRow";
 import SignOutButton from "./SignOutButton";
+import Logo from "@/components/Logo";
 
 export const dynamic = "force-dynamic";
 
@@ -37,11 +38,12 @@ export default async function DashboardPage() {
     <div className="min-h-screen bg-[var(--paper)]">
       {/* Top bar */}
       <header className="border-b border-[var(--muted)]/25 px-8 py-4 flex items-center justify-between">
-        <span className="font-display font-bold text-[var(--ink)]">
-          <span className="text-[var(--blue)]">[</span>
-          &nbsp;Dashboard&nbsp;
-          <span className="text-[var(--blue)]">]</span>
-        </span>
+        <div className="flex items-center gap-3">
+          <Logo className="w-8 h-8" />
+          <span className="text-xs font-mono uppercase tracking-widest text-[var(--muted)] border border-[var(--muted)]/30 px-2 py-0.5">
+            Dashboard
+          </span>
+        </div>
         <div className="flex items-center gap-6 text-sm text-[var(--muted)]">
           <span>
             {total} total &middot;{" "}
