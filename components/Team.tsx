@@ -1,35 +1,32 @@
 "use client";
 
+import Image from "next/image";
 import { useInView } from "@/hooks/useInView";
 
 const members = [
   {
-    initials: "MH",
     name: "Mahi Hasan",
-    role: "Lead Systems Architect & Founder",
-    focus: "Full-stack architectures, Next.js, distributed databases, cloud deployments",
-    color: "#2563EB",
+    role: "Lead Systems Engineer & Founder",
+    bio: "Passionate about building reliable web systems, data architectures, and practical AI integrations for local businesses and organizations.",
+    image: "/team/mahi.jpg",
   },
   {
-    initials: "RA",
     name: "Rafid",
-    role: "Backend & Systems Engineer",
-    focus: "Distributed APIs, database schemas, performance profiling, backend pipelines",
-    color: "#0284C7",
+    role: "Backend & Database Engineer",
+    bio: "Focuses on high-availability databases, server configurations, API security, and making sure systems never drop client data.",
+    image: "/team/rafid.jpg",
   },
   {
-    initials: "NI",
     name: "Nabil",
-    role: "Mobile & Frontend Engineer",
-    focus: "React Native, Expo, offline-first mobile apps, accessible UI interactions",
-    color: "#0D9488",
+    role: "Mobile & Frontend Developer",
+    bio: "Specializes in smooth, responsive mobile apps and modern web interfaces that feel intuitive and fast on every screen size.",
+    image: "/team/nabil.jpg",
   },
   {
-    initials: "SA",
     name: "Sadia",
-    role: "UI/UX & Product Architect",
-    focus: "Information architecture, design tokens, interaction states, Figma systems",
-    color: "#4F46E5",
+    role: "UI/UX & Product Design",
+    bio: "Translates complex business workflows into clear, clean user experiences so your customers and team can use software effortlessly.",
+    image: "/team/sadia.jpg",
   },
 ];
 
@@ -37,7 +34,7 @@ export default function Team() {
   const { ref: headRef, inView: headIn } = useInView();
 
   return (
-    <section id="team" className="bg-[#0A0D14] py-28 px-6 border-b border-white/5">
+    <section id="team" className="bg-[#0A0D14] py-28 px-6 border-b border-white/10">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div
@@ -46,14 +43,14 @@ export default function Team() {
             headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-800/40 text-blue-300 px-3 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-4">
-            Engineering Team
+          <div className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-800/40 text-blue-300 px-3.5 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider mb-4">
+            Meet The Developers
           </div>
           <h2 className="text-white text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
-            A small team with serious craft.
+            Real people you can talk to directly.
           </h2>
-          <p className="text-slate-400 text-base sm:text-lg max-w-2xl font-normal">
-            We are a tight-knit developer team based in Dhaka, building real software for professors, campus organizations, and scaling businesses.
+          <p className="text-slate-400 text-base sm:text-lg max-w-2xl">
+            We are a student and alumni dev team based right here in Dhaka. When you work with Bracket Studio, you collaborate directly with the creators of your software.
           </p>
         </div>
 
@@ -62,30 +59,37 @@ export default function Team() {
           {members.map((m) => (
             <div
               key={m.name}
-              className="bg-[#111622] border border-white/10 rounded-xl p-6 hover:border-blue-500/40 hover:bg-[#151C2C] transition-all flex flex-col justify-between group"
+              className="bg-[#111622] border border-white/10 rounded-2xl overflow-hidden shadow-lg hover:border-blue-500/40 hover:bg-[#141B2A] transition-all flex flex-col justify-between group"
             >
               <div>
-                {/* Avatar Badge */}
-                <div
-                  className="w-12 h-12 rounded-lg flex items-center justify-center font-mono font-bold text-sm text-white mb-5 shadow-md"
-                  style={{ backgroundColor: m.color }}
-                >
-                  {m.initials}
+                {/* Real Portrait Photo */}
+                <div className="relative aspect-square w-full bg-slate-800 overflow-hidden">
+                  <Image
+                    src={m.image}
+                    alt={m.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#111622] via-transparent to-transparent opacity-60" />
                 </div>
-                <h4 className="text-white font-bold text-lg mb-1 group-hover:text-blue-300 transition-colors">
-                  {m.name}
-                </h4>
-                <p className="text-xs font-mono text-blue-400 font-medium mb-4">
-                  {m.role}
-                </p>
-                <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
-                  {m.focus}
-                </p>
+
+                <div className="p-6">
+                  <h3 className="text-white font-bold text-lg mb-1">
+                    {m.name}
+                  </h3>
+                  <p className="text-xs font-semibold text-blue-400 mb-3">
+                    {m.role}
+                  </p>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                    {m.bio}
+                  </p>
+                </div>
               </div>
 
-              <div className="pt-4 mt-6 border-t border-white/5 flex items-center justify-between text-xs text-slate-500 font-mono">
-                <span>Dhaka, BD</span>
-                <span className="text-slate-400 group-hover:text-white transition-colors">&rarr;</span>
+              <div className="px-6 pb-6 pt-2 border-t border-white/5 flex items-center justify-between text-xs text-slate-400">
+                <span>Based in Dhaka</span>
+                <span className="text-blue-400 font-semibold">Active &bull;</span>
               </div>
             </div>
           ))}
