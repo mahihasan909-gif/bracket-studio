@@ -8,7 +8,7 @@ export default function Logo({
   return (
     <div className="flex items-center gap-2.5 group">
       <svg
-        className={`shrink-0 transition-transform duration-300 group-hover:scale-105 ${className}`}
+        className={`shrink-0 transition-transform duration-300 group-hover:scale-105 shadow-sm rounded-lg ${className}`}
         viewBox="0 0 160 160"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -27,7 +27,7 @@ export default function Logo({
         </g>
       </svg>
       {showText && (
-        <span className="font-display font-bold text-[var(--paper)] text-lg tracking-tight group-hover:text-[var(--blue-light)] transition-colors">
+        <span className="font-display font-bold text-[#F8FAFC] text-lg tracking-tight group-hover:text-blue-400 transition-colors">
           Bracket Studio
         </span>
       )}

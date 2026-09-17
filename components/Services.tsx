@@ -54,13 +54,13 @@ function ServiceCard({ s, delay }: { s: typeof services[0]; delay: number }) {
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`bg-white rounded-2xl border border-slate-200 shadow-xs hover:shadow-xl hover:border-blue-300 transition-all duration-500 overflow-hidden flex flex-col group ${
+      className={`it-card overflow-hidden flex flex-col group ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Topic Image */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-100">
+      <div className="relative aspect-[16/9] w-full overflow-hidden bg-slate-900 border-b border-white/5">
         <Image
           src={s.image}
           alt={s.title}
@@ -68,11 +68,11 @@ function ServiceCard({ s, delay }: { s: typeof services[0]; delay: number }) {
           className="object-cover group-hover:scale-105 transition-transform duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
-        {/* Soft overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/40 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity" />
+        {/* Subtle overlay for image clarity */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111622] via-transparent to-transparent opacity-70 group-hover:opacity-40 transition-opacity duration-300" />
 
-        {/* Badge in image corner */}
-        <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-2.5 py-1 rounded-md text-xs font-mono font-bold text-blue-600 shadow-xs">
+        {/* Index badge */}
+        <div className="absolute top-3 left-3 bg-[#0A0D14]/85 backdrop-blur-md border border-white/10 px-2.5 py-1 rounded-md text-xs font-mono font-bold text-blue-400 shadow-sm">
           {s.bracket}
         </div>
       </div>
@@ -80,25 +80,25 @@ function ServiceCard({ s, delay }: { s: typeof services[0]; delay: number }) {
       {/* Card Body */}
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
-          <div className="flex items-center justify-between mb-2">
-            <h3 className="font-display font-bold text-slate-900 text-xl group-hover:text-blue-600 transition-colors">
+          <div className="flex items-center justify-between mb-2.5">
+            <h3 className="font-display font-bold text-[#F8FAFC] text-xl group-hover:text-sky-300 transition-colors">
               {s.title}
             </h3>
-            <span className="text-slate-300 group-hover:text-blue-600 group-hover:translate-x-1 transition-all duration-300 font-mono text-lg">
+            <span className="text-slate-500 group-hover:text-sky-400 group-hover:translate-x-1 transition-all duration-300 font-mono text-lg">
               &rarr;
             </span>
           </div>
-          <p className="text-slate-600 text-sm leading-relaxed mb-6">
+          <p className="text-slate-400 text-sm leading-relaxed mb-6 font-body">
             {s.desc}
           </p>
         </div>
 
-        {/* Tech tags */}
-        <div className="flex flex-wrap gap-1.5 pt-4 border-t border-slate-100">
+        {/* Tech pills */}
+        <div className="flex flex-wrap gap-1.5 pt-4 border-t border-white/5">
           {s.tech.map((t) => (
             <span
               key={t}
-              className="text-xs bg-slate-50 border border-slate-200/80 text-slate-600 px-2.5 py-1 rounded-md font-mono"
+              className="text-xs bg-[#0E131F] border border-white/10 text-slate-300 px-2.5 py-1 rounded-md font-mono"
             >
               {t}
             </span>
@@ -113,7 +113,7 @@ export default function Services() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="services" className="bg-slate-50 py-24 px-6 relative">
+    <section id="services" className="bg-[#0A0D14] py-24 px-6 relative">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div
@@ -122,15 +122,15 @@ export default function Services() {
             inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-blue-700 px-3.5 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-800/40 text-blue-300 px-3.5 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-3">
             [ WHAT WE BUILD ]
           </div>
-          <h2 className="font-display font-bold text-slate-900 text-3xl md:text-5xl leading-tight">
+          <h2 className="font-display font-bold text-[#F8FAFC] text-3xl md:text-5xl leading-tight">
             Comprehensive IT services,
             <br />
-            <span className="gradient-text">engineered with precision.</span>
+            <span className="gradient-headline">engineered with precision.</span>
           </h2>
-          <p className="text-slate-500 mt-3 text-base md:text-lg max-w-2xl">
+          <p className="text-slate-400 mt-3 text-base md:text-lg max-w-2xl font-body">
             From single-page web experiences to full agentic software suites and cloud databases, we cover every technical layer.
           </p>
         </div>

@@ -1,39 +1,37 @@
 @import "tailwindcss";
 
-/* ── Modern Soft IT Company Palette ──────────────── */
+/* ── Formal Executive IT Studio Palette (Matching Logo) ─────── */
 :root {
-  --canvas:       #F8FAFC;  /* Slate-50: ultra clean, soft, modern */
-  --surface:      #FFFFFF;  /* Crisp pure white */
-  --surface-subtle: #F1F5F9; /* Slate-100 */
-  --ink:          #0F172A;  /* Slate-900: sharp, rich contrast */
-  --ink-secondary:#334155;  /* Slate-700 */
-  --muted:        #64748B;  /* Slate-500 */
-  --muted-light:  #94A3B8;  /* Slate-400 */
-  --border:       #E2E8F0;  /* Slate-200 */
-  --border-subtle: rgba(226, 232, 240, 0.8);
-  --blue:         #2563EB;  /* Royal Blue: matches brand logo */
-  --blue-light:   #3B82F6;  /* Electric Blue */
-  --blue-soft:    #EFF6FF;  /* Blue-50 */
-  --blue-border:  #BFDBFE;  /* Blue-200 */
-  --red:          #E11D48;  /* Rose-600 */
+  --bg-main:       #0A0D14;  /* Deep IT Midnight Ground (matches #0A0D12 logo) */
+  --bg-card:       #111622;  /* Elevated Card Surface */
+  --bg-card-hover: #151C2C;  /* Elevated Hover Surface */
+  --bg-subtle:     #0E131F;  /* Sub-surface / Section alternate */
+  
+  --text-white:    #F8FAFC;  /* Crisp Architectural Light (matches logo white) */
+  --text-muted:    #94A3B8;  /* Refined Slate-400 for body */
+  --text-soft:     #CBD5E1;  /* Slate-300 for secondary headers */
+  
+  --border-card:   rgba(255, 255, 255, 0.08); /* Crisp subtle border */
+  --border-hover:  rgba(37, 99, 235, 0.45);   /* Blue hover border */
+  
+  --brand-blue:    #2563EB;  /* Royal Blue (matches logo lower lobe) */
+  --brand-cyan:    #38BDF8;  /* Cyan highlight */
+  --brand-glow:    rgba(37, 99, 235, 0.18);
+  --brand-red:     #E11D48;  /* Accent for Why Us callout */
 }
 
 @theme inline {
-  --color-canvas:       var(--canvas);
-  --color-surface:      var(--surface);
-  --color-surface-subtle: var(--surface-subtle);
-  --color-ink:          var(--ink);
-  --color-ink-secondary:var(--ink-secondary);
-  --color-muted:        var(--muted);
-  --color-muted-light:  var(--muted-light);
-  --color-border:       var(--border);
-  --color-blue:         var(--blue);
-  --color-blue-light:   var(--blue-light);
-  --color-blue-soft:    var(--blue-soft);
-  --color-blue-border:  var(--blue-border);
-  --color-red:          var(--red);
-  --font-display:       var(--font-fraunces), Georgia, serif;
-  --font-body:          var(--font-ibm-plex-sans), system-ui, sans-serif;
+  --color-bg-main:       var(--bg-main);
+  --color-bg-card:       var(--bg-card);
+  --color-bg-card-hover: var(--bg-card-hover);
+  --color-bg-subtle:     var(--bg-subtle);
+  --color-text-white:    var(--text-white);
+  --color-text-muted:    var(--text-muted);
+  --color-text-soft:     var(--text-soft);
+  --color-border-card:   var(--border-card);
+  --color-brand-blue:    var(--brand-blue);
+  --font-display:        var(--font-fraunces), Georgia, serif;
+  --font-body:           var(--font-ibm-plex-sans), system-ui, sans-serif;
 }
 
 /* ── Base ──────────────────────────────────────────── */
@@ -41,25 +39,25 @@
 html { scroll-behavior: smooth; }
 
 body {
-  background-color: var(--canvas);
-  color: var(--ink);
+  background-color: var(--bg-main);
+  color: var(--text-white);
   font-family: var(--font-body);
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
-/* ── Type scale ────────────────────────────────────── */
-h1 { font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.06; }
-h2 { font-size: clamp(1.8rem, 4vw, 2.9rem); line-height: 1.12; }
+/* ── Type Scale ────────────────────────────────────── */
+h1 { font-size: clamp(2.5rem, 6vw, 4.2rem); line-height: 1.08; }
+h2 { font-size: clamp(1.85rem, 4.2vw, 3rem); line-height: 1.15; }
 h3 { font-size: clamp(1.25rem, 3vw, 1.85rem); line-height: 1.25; }
-h4 { font-size: 1.25rem; line-height: 1.35; }
+h4 { font-size: 1.2rem; line-height: 1.35; }
 
 h1, h2, h3, h4 {
   font-family: var(--font-display);
   font-weight: 700;
-  color: var(--ink);
+  color: var(--text-white);
 }
 
 /* ── Keyframes ─────────────────────────────────────── */
@@ -85,32 +83,30 @@ h1, h2, h3, h4 {
 }
 @keyframes float {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
+  50%       { transform: translateY(-8px); }
 }
 
-/* ── Animation utility classes ─────────────────────── */
 .bracket-left  { animation: bracket-left  0.7s cubic-bezier(.16,1,.3,1) forwards; }
 .bracket-right { animation: bracket-right 0.7s cubic-bezier(.16,1,.3,1) forwards; }
 .anim-fade-up  { animation: fade-up 0.7s cubic-bezier(.16,1,.3,1) both; }
 .anim-fade-in  { animation: fade-in 0.6s ease both; }
+.float-bracket { animation: float 7s ease-in-out infinite; }
 
 .delay-100 { animation-delay: 0.10s; }
 .delay-200 { animation-delay: 0.20s; }
 .delay-300 { animation-delay: 0.30s; }
 .delay-400 { animation-delay: 0.40s; }
 .delay-500 { animation-delay: 0.50s; }
-.delay-600 { animation-delay: 0.60s; }
-.delay-700 { animation-delay: 0.70s; }
 
-/* ── Gradient headline text ────────────────────────── */
-.gradient-text {
-  background: linear-gradient(135deg, #0F172A 0%, #2563EB 60%, #1E40AF 100%);
+/* ── Gradient Headline ─────────────────────────────── */
+.gradient-headline {
+  background: linear-gradient(135deg, #F8FAFC 20%, #38BDF8 65%, #2563EB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
-/* ── Ticker / marquee ──────────────────────────────── */
+/* ── Ticker Track ──────────────────────────────────── */
 .ticker-track {
   display: flex;
   width: max-content;
@@ -118,63 +114,61 @@ h1, h2, h3, h4 {
 }
 .ticker-track:hover { animation-play-state: paused; }
 
-/* ── Floating bracket decoration ───────────────────── */
-.float-bracket { animation: float 7s ease-in-out infinite; }
-
-/* ── Modern IT Buttons ─────────────────────────────── */
+/* ── Executive Buttons ─────────────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--blue);
+  background-color: var(--brand-blue);
   color: #FFFFFF;
   font-family: var(--font-body);
   font-weight: 600;
-  padding: 0.8rem 1.6rem;
+  padding: 0.8rem 1.65rem;
   border-radius: 0.625rem;
-  box-shadow: 0 4px 14px -2px rgba(37, 99, 235, 0.35);
-  transition: all 0.2s ease;
+  box-shadow: 0 4px 16px -2px rgba(37, 99, 235, 0.45);
+  transition: all 0.25s ease;
   cursor: pointer;
   text-decoration: none;
 }
 .btn-primary:hover {
   background-color: #1D4ED8;
-  box-shadow: 0 6px 20px -2px rgba(37, 99, 235, 0.5);
+  box-shadow: 0 6px 24px -2px rgba(37, 99, 235, 0.65);
   transform: translateY(-1px);
 }
 
-.btn-ghost {
+.btn-secondary {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: var(--surface);
-  color: var(--ink);
+  background-color: rgba(255, 255, 255, 0.04);
+  color: var(--text-white);
   font-family: var(--font-body);
   font-weight: 600;
-  padding: 0.8rem 1.6rem;
+  padding: 0.8rem 1.65rem;
   border-radius: 0.625rem;
-  border: 1px solid var(--border);
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-  transition: all 0.2s ease;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
   cursor: pointer;
   text-decoration: none;
 }
-.btn-ghost:hover {
-  background-color: #F8FAFC;
-  border-color: #CBD5E1;
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-1px);
 }
 
-/* ── Modern Soft Card ──────────────────────────────── */
-.soft-card {
-  background-color: var(--surface);
-  border: 1px solid var(--border);
+/* ── Executive Card ────────────────────────────────── */
+.it-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
   border-radius: 1rem;
-  box-shadow: 0 2px 8px -2px rgba(15, 23, 42, 0.04), 0 10px 24px -4px rgba(15, 23, 42, 0.03);
+  box-shadow: 0 4px 20px -4px rgba(0, 0, 0, 0.35);
   transition: all 0.3s cubic-bezier(.16,1,.3,1);
 }
-.soft-card:hover {
-  border-color: #BFDBFE;
-  box-shadow: 0 12px 32px -8px rgba(37, 99, 235, 0.12);
+.it-card:hover {
+  border-color: var(--border-hover);
+  background-color: var(--bg-card-hover);
+  box-shadow: 0 12px 36px -6px rgba(37, 99, 235, 0.2);
   transform: translateY(-3px);
 }

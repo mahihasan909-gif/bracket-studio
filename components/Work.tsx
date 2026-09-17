@@ -21,33 +21,33 @@ function CaseStudyCard({ cs, delay }: { cs: typeof caseStudies[0]; delay: number
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className={`bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden group transition-all duration-700 hover:border-blue-300 hover:shadow-xl ${
+      className={`bg-[#111622] rounded-2xl border border-white/10 shadow-lg overflow-hidden group transition-all duration-700 hover:border-blue-500/50 ${
         inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Top Window Bar */}
-      <div className="px-6 py-3.5 bg-slate-50 border-b border-slate-200 flex items-center justify-between">
+      <div className="px-6 py-3.5 bg-[#0A0D14] border-b border-white/5 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-3 h-3 rounded-full bg-rose-400" />
-          <div className="w-3 h-3 rounded-full bg-amber-400" />
-          <div className="w-3 h-3 rounded-full bg-emerald-400" />
-          <span className="ml-3 font-mono text-xs text-slate-500 font-medium">
+          <div className="w-3 h-3 rounded-full bg-rose-500/80" />
+          <div className="w-3 h-3 rounded-full bg-amber-500/80" />
+          <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
+          <span className="ml-3 font-mono text-xs text-slate-400 font-medium">
             case-study / portal.production.app
           </span>
         </div>
-        <span className="font-mono text-xs text-blue-600 font-semibold uppercase tracking-wider">
+        <span className="font-mono text-xs text-sky-400 font-semibold uppercase tracking-wider">
           {cs.tag}
         </span>
       </div>
 
-      <div className="grid md:grid-cols-[1fr_2fr] divide-y md:divide-y-0 md:divide-x divide-slate-100">
-        <div className="p-8 flex flex-col justify-between bg-slate-50/50">
+      <div className="grid md:grid-cols-[1fr_2fr] divide-y md:divide-y-0 md:divide-x divide-white/5">
+        <div className="p-8 flex flex-col justify-between bg-[#0E131F]/50">
           <div>
-            <h3 className="font-display font-bold text-slate-900 text-2xl mb-4 group-hover:text-blue-600 transition-colors">
+            <h3 className="font-display font-bold text-[#F8FAFC] text-2xl mb-4 group-hover:text-sky-300 transition-colors">
               {cs.title}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed">
+            <p className="text-sm text-slate-400 leading-relaxed font-body">
               Real pilot project built for academic faculty and department operations.
             </p>
           </div>
@@ -55,7 +55,7 @@ function CaseStudyCard({ cs, delay }: { cs: typeof caseStudies[0]; delay: number
             {cs.tags.map((t) => (
               <span
                 key={t}
-                className="text-xs bg-white border border-slate-200 text-slate-600 px-2.5 py-1 rounded-md font-mono"
+                className="text-xs bg-[#111622] border border-white/10 text-slate-300 px-2.5 py-1 rounded-md font-mono"
               >
                 {t}
               </span>
@@ -67,15 +67,15 @@ function CaseStudyCard({ cs, delay }: { cs: typeof caseStudies[0]; delay: number
           {[
             { label: "The Challenge", text: cs.problem, highlight: false },
             { label: "What We Engineered", text: cs.built, highlight: false },
-            { label: "Business & Academic Result", text: cs.result, highlight: true },
+            { label: "Result & Impact", text: cs.result, highlight: true },
           ].map(({ label, text, highlight }) => (
             <div key={label}>
               <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1.5 font-mono">
                 {label}
               </p>
               <p
-                className={`text-sm md:text-base leading-relaxed ${
-                  highlight ? "text-slate-900 font-semibold" : "text-slate-600"
+                className={`text-sm md:text-base leading-relaxed font-body ${
+                  highlight ? "text-white font-semibold" : "text-slate-300"
                 }`}
               >
                 {text}
@@ -92,7 +92,7 @@ export default function Work() {
   const { ref: headRef, inView: headIn } = useInView();
 
   return (
-    <section id="work" className="bg-slate-50 py-24 px-6 border-b border-slate-200/80">
+    <section id="work" className="bg-[#0E131F] py-24 px-6 border-b border-white/5">
       <div className="max-w-6xl mx-auto">
         <div
           ref={headRef as React.RefObject<HTMLDivElement>}
@@ -100,13 +100,13 @@ export default function Work() {
             headIn ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200/80 text-blue-700 px-3.5 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-3">
+          <div className="inline-flex items-center gap-2 bg-blue-950/60 border border-blue-800/40 text-blue-300 px-3.5 py-1 rounded-full text-xs font-mono font-semibold tracking-wider uppercase mb-3">
             [ RECENT WORK ]
           </div>
-          <h2 className="font-display font-bold text-slate-900 text-3xl md:text-5xl leading-tight">
+          <h2 className="font-display font-bold text-[#F8FAFC] text-3xl md:text-5xl leading-tight">
             Problems solved,
             <br />
-            <span className="gradient-text">systems shipped.</span>
+            <span className="gradient-headline">systems shipped.</span>
           </h2>
         </div>
 
